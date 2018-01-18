@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using System.Collections.Generic;
 using SampleOne.Shapes;
 
 namespace SampleOne
@@ -13,22 +13,14 @@ namespace SampleOne
 			this.generator = generator;
 		}
 
-		public string GetShapeAreas()
+		public Dictionary<Type, double> GetShapeAreas()
 		{
-			var shapes = new List<Shape>
+			return new Dictionary<Type, double>
 			{
-				generator.GetShape(typeof(Circle)),
-				generator.GetShape(typeof(Square)),
-				generator.GetShape(typeof(Rectangle))
+				{typeof(Circle), generator.GetShape(typeof(Circle)).CalculateArea()},
+				{typeof(Square), generator.GetShape(typeof(Square)).CalculateArea()},
+				{typeof(Rectangle), generator.GetShape(typeof(Rectangle)).CalculateArea()}
 			};
-
-			var sb = new StringBuilder();
-			foreach (var shape in shapes)
-			{
-				sb.AppendLine($"area of {shape.GetType().Name} is {shape.CalculateArea()}");
-			}
-
-			return sb.ToString();
 		}
 	}
 }

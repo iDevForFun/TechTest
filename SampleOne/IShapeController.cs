@@ -1,7 +1,10 @@
-﻿namespace SampleOne
+﻿using System;
+using System.Collections.Generic;
+
+namespace SampleOne
 {
 	public interface IShapeController
 	{
-		string GetShapeAreas();
+		Dictionary<Type, double> GetShapeAreas();
 	}
 }
